@@ -1,5 +1,0 @@
-com\n1netails\n1netails\telegram\internal\TelegramClientImpl.class
-com\n1netails\n1netails\telegram\api\TelegramClient.class
-com\n1netails\n1netails\telegram\exception\TelegramClientException.class
-com\n1netails\n1netails\telegram\model\TelegramMessage.class
-com\n1netails\n1netails\telegram\service\BotService.class

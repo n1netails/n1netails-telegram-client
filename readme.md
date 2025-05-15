@@ -7,3 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 # Telegram Client
+
+https://core.telegram.org/
+
+https://core.telegram.org/methods
+

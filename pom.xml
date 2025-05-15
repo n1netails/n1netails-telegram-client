@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.n1netails</groupId>
+  <artifactId>n1netails-telegram-client</artifactId>
+  <version>0.0.2</version>
+  <packaging>jar</packaging>
+
+  <name>n1netails-telegram-client</name>
+  <description>A lightweight Java client for sending telegram notifications using telegram bots.</description>
+  <url>https://github.com/n1netails/n1netails-telegram-client</url>
+
+  <scm>
+    <url>https://github.com/n1netails/n1netails-telegram-client/tree/main</url>
+    <connection>scm:git:git://github.com/n1netails/n1netails-telegram-client.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:n1netails/n1netails-telegram-client.git</developerConnection>
+  </scm>
+
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://opensource.org/licenses/MIT</url>
+      <distribution>repo</distribution>
+      <comments>
+        This project is licensed under the MIT License — see the LICENSE file for details.
+      </comments>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>shahidfoy</id>
+      <name>Shahid Foy</name>
+      <email>shahidfoy@gmail.com</email>
+    </developer>
+  </developers>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.38</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>

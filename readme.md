@@ -10,7 +10,7 @@
 N1ne Tails is an open-source project that provides practical alerts and monitoring for applications.
 Use the N1ne Tails Telegram Client to easily send messages to a telegram chat group.
 
-## Hot to set up telegram
+## How to set up telegram
 Telegram is an application you can download on your smartphone. You can download Telegram here
 https://telegram.org/
 

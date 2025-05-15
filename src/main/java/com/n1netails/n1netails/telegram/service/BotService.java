@@ -11,10 +11,24 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.stream.Collectors;
 
+/**
+ * Telegram Bot Service
+ * @author shahid foy
+ */
 public class BotService {
 
+    /**
+     * Bot Service Constructor
+     */
     public BotService() {}
 
+    /**
+     * Send telegram notification
+     * @param chatId telegram chat id
+     * @param botToken telegram bot token
+     * @param message telegram message
+     * @throws TelegramClientException telegram client exception
+     */
     public void send(String chatId, String botToken, TelegramMessage message) throws TelegramClientException {
         try {
             String apiUrl = "https://api.telegram.org/bot" + botToken + "/sendMessage";

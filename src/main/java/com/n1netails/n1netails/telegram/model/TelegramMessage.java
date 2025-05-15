@@ -3,6 +3,10 @@ package com.n1netails.n1netails.telegram.model;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Telegram Message
+ * @author shahid foy
+ */
 @Getter
 @Setter
 public class TelegramMessage {

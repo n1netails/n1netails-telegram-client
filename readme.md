@@ -86,7 +86,7 @@ Resources:
 Install the telegram client by adding the following dependency:
 ```xml
 <dependency>
-    <groupId>com.n1ne</groupId>
+    <groupId>com.n1netails</groupId>
     <artifactId>n1netails-telegram-client</artifactId>
     <version>0.1.0</version>
 </dependency>

@@ -24,24 +24,30 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
 
       - name: Set up Java
-        # Using Temurin JDK 17 since it's a stable LTS release
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Initialize CodeQL
-        # Sets up CodeQL for Java analysis
-        uses: github/codeql-action/init@v4
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
         with:
-          languages: ${{ matrix.language }}
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
 
-      - name: Build project
-        # Build the Maven project so CodeQL can scan the compiled classes
-        run: mvn -B -DskipTests package --file pom.xml
+      - name: Build with Maven
+        run: mvn -B -f pom.xml clean install -DskipTests
 
-      - name: Run CodeQL analysis
-        uses: github/codeql-action/analyze@v4
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"

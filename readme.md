@@ -7,8 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 # Telegram Client
-N1ne Tails is an open-source project that provides practical alerts and monitoring for applications.
-Use the N1ne Tails Telegram Client to easily send messages to a telegram chat group.
+N1netails is an open-source project that provides practical alerts and monitoring for applications.
+Use the N1netails Telegram Client to easily send messages to a telegram chat group.
 
 ## How to set up telegram
 Telegram is an application you can download on your smartphone. You can download Telegram here

@@ -189,4 +189,4 @@ Please use the following guidelines for contributions [CONTRIBUTING](./contribut
 
 Thanks to all the amazing people who contributed to N1netails Telegram Client! 💙
 
-[![Contributors](https://contrib.rocks/image?repo=n1netails/n1netails)](https://github.com/n1netails/n1netails-telegram-client/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=n1netails/n1netails-telegram-client)](https://github.com/n1netails/n1netails-telegram-client/graphs/contributors)

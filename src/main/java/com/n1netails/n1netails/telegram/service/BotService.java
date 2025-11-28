@@ -2,6 +2,7 @@ package com.n1netails.n1netails.telegram.service;
 
 import com.n1netails.n1netails.telegram.exception.TelegramClientException;
 import com.n1netails.n1netails.telegram.model.TelegramMessage;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -32,20 +33,22 @@ public class BotService {
     public void send(String chatId, String botToken, TelegramMessage message) throws TelegramClientException {
         try {
             String apiUrl = "https://api.telegram.org/bot" + botToken + "/sendMessage";
-            String payload = String.format(
-                    "chat_id=%s&text=%s&disable_notification=%b",
-                    chatId,
-                    encode(message.getText()),
-                    message.isDisableNotification()
-            );
+            JSONObject jsonPayload = new JSONObject();
+            jsonPayload.put("chat_id", chatId);
+            jsonPayload.put("text", message.getText());
+            jsonPayload.put("disable_notification", message.isDisableNotification());
+
+            if (message.getReplyMarkup() != null) {
+                jsonPayload.put("reply_markup", new JSONObject(message.getReplyMarkup()));
+            }
 
             HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
-            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            conn.setRequestProperty("Content-Type", "application/json");
 
             try (OutputStream os = conn.getOutputStream()) {
-                os.write(payload.getBytes(StandardCharsets.UTF_8));
+                os.write(jsonPayload.toString().getBytes(StandardCharsets.UTF_8));
             }
 
             int responseCode = conn.getResponseCode();
@@ -62,9 +65,5 @@ public class BotService {
         } catch (Exception e) {
             throw new TelegramClientException("Failed to send Telegram message", e);
         }
-    }
-
-    private String encode(String text) {
-        return text.replace("&", "%26").replace(" ", "%20").replace("\n", "%0A");
     }
 }

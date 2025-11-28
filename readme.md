@@ -144,7 +144,12 @@ TelegramClient client = new TelegramClientImpl(service);
 ```java
 import com.n1netails.n1netails.telegram.api.TelegramClient;
 import com.n1netails.n1netails.telegram.internal.TelegramClientImpl;
+import com.n1netails.n1netails.telegram.model.Button;
+import com.n1netails.n1netails.telegram.model.InlineKeyboardMarkup;
+import com.n1netails.n1netails.telegram.model.TelegramMessage;
 import com.n1netails.n1netails.telegram.service.BotService;
+
+import java.util.Collections;
 
 public class ExampleService {
     private final TelegramClient telegramClient;
@@ -154,7 +159,9 @@ public class ExampleService {
     }
 
     public void telegramNotificationExample(String content) {
-        TelegramMessage telegramMessage = new TelegramMessage("N1netails Telegram Works!", false);
+        Button button = new Button("Visit N1netails", "https://n1netails.com");
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup(Collections.singletonList(Collections.singletonList(button)));
+        TelegramMessage telegramMessage = new TelegramMessage("N1netails Telegram Works!", false, keyboardMarkup);
         // replace with your telegram chat id
         String chatId = "your-telegram-chat-id";
         // replace with your telegram bot token

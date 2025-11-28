@@ -6,6 +6,11 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+![Stars](https://img.shields.io/github/stars/n1netails/n1netails-telegram-client)
+![Issues](https://img.shields.io/github/issues/n1netails/n1netails-telegram-client)
+![Contributors](https://img.shields.io/github/contributors/n1netails/n1netails-telegram-client)
+![Last Commit](https://img.shields.io/github/last-commit/n1netails/n1netails-telegram-client)
+
 # Telegram Client
 N1netails is an open-source project that provides practical alerts and monitoring for applications.
 Use the N1netails Telegram Client to easily send messages to a telegram chat group.
@@ -88,8 +93,13 @@ Install the telegram client by adding the following dependency:
 <dependency>
     <groupId>com.n1netails</groupId>
     <artifactId>n1netails-telegram-client</artifactId>
-    <version>0.1.1</version>
+    <version>0.2.0</version>
 </dependency>
+```
+
+Gradle (Groovy)
+```groovy
+implementation 'com.n1netails:n1netails-telegram-client:0.2.0'
 ```
 
 ## Configure

@@ -171,6 +171,11 @@ public class ExampleService {
 }
 ```
 
+#### Example message output
+<div align="center">
+  <img src="telegram-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
+</div>
+
 # Develop
 ## Build
 Build the project using the following command

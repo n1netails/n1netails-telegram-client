@@ -1,10 +1,15 @@
-# N1ne Tails
+# N1netails
 
 <div align="center">
   <img src="https://raw.githubusercontent.com/n1netails/n1netails/refs/heads/main/n1netails_icon_transparent.png" alt="N1ne Tails" width="500" style="display: block; margin: auto;"/>
 </div>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+![Stars](https://img.shields.io/github/stars/n1netails/n1netails-telegram-client)
+![Issues](https://img.shields.io/github/issues/n1netails/n1netails-telegram-client)
+![Contributors](https://img.shields.io/github/contributors/n1netails/n1netails-telegram-client)
+![Last Commit](https://img.shields.io/github/last-commit/n1netails/n1netails-telegram-client)
 
 # Telegram Client
 N1netails is an open-source project that provides practical alerts and monitoring for applications.
@@ -88,8 +93,13 @@ Install the telegram client by adding the following dependency:
 <dependency>
     <groupId>com.n1netails</groupId>
     <artifactId>n1netails-telegram-client</artifactId>
-    <version>0.1.1</version>
+    <version>0.2.0</version>
 </dependency>
+```
+
+Gradle (Groovy)
+```groovy
+implementation 'com.n1netails:n1netails-telegram-client:0.2.0'
 ```
 
 ## Configure
@@ -134,7 +144,12 @@ TelegramClient client = new TelegramClientImpl(service);
 ```java
 import com.n1netails.n1netails.telegram.api.TelegramClient;
 import com.n1netails.n1netails.telegram.internal.TelegramClientImpl;
+import com.n1netails.n1netails.telegram.model.Button;
+import com.n1netails.n1netails.telegram.model.InlineKeyboardMarkup;
+import com.n1netails.n1netails.telegram.model.TelegramMessage;
 import com.n1netails.n1netails.telegram.service.BotService;
+
+import java.util.Collections;
 
 public class ExampleService {
     private final TelegramClient telegramClient;
@@ -144,7 +159,9 @@ public class ExampleService {
     }
 
     public void telegramNotificationExample(String content) {
-        TelegramMessage telegramMessage = new TelegramMessage("N1netails Telegram Works!", false);
+        Button button = new Button("Visit N1netails", "https://n1netails.com");
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup(Collections.singletonList(Collections.singletonList(button)));
+        TelegramMessage telegramMessage = new TelegramMessage("N1netails Telegram Works!", false, keyboardMarkup);
         // replace with your telegram chat id
         String chatId = "your-telegram-chat-id";
         // replace with your telegram bot token
@@ -153,6 +170,11 @@ public class ExampleService {
     }
 }
 ```
+
+#### Example message output
+<div align="center">
+  <img src="telegram-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
+</div>
 
 # Develop
 ## Build

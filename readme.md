@@ -197,6 +197,44 @@ Maven deploy to the maven central repository
 mvn deploy -P release
 ```
 
+### GPG
+Generate keys
+```bash
+gpg --full-generate-key
+```
+
+List keys
+```bash
+gpg --list-secret-keys --keyid-format LONG
+```
+
+Export
+### Export private key
+```bash
+gpg --export-secret-keys --armor YOUR_KEY_ID > private.asc
+```
+
+### Export public key
+
+```bash
+gpg --export --armor YOUR_KEY_ID > public.asc
+```
+
+Import
+```bash
+gpg --import private.asc
+gpg --import public.asc
+```
+
+List packets (good for validating keys were exported correctly)
+```bash
+gpg --list-packets public.asc
+```
+
+
+
+
+
 ## Support
 
 For community users, open an issue on GitHub or Join our Discord

@@ -93,13 +93,13 @@ Install the telegram client by adding the following dependency:
 <dependency>
     <groupId>com.n1netails</groupId>
     <artifactId>n1netails-telegram-client</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
 Gradle (Groovy)
 ```groovy
-implementation 'com.n1netails:n1netails-telegram-client:0.2.0'
+implementation 'com.n1netails:n1netails-telegram-client:0.3.0'
 ```
 
 ## Configure
@@ -170,7 +170,18 @@ public class ExampleService {
     }
 
     public void telegramGifNotificationExample() {
-        TelegramMessage telegramMessage = new TelegramMessage("Check out this GIF!", "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKSjPQCpSWvS9E4/giphy.gif", false);
+        TelegramMessage telegramMessage = new TelegramMessage("Check out this GIF!", "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDRhOWtpMnVsM2NiMzJ4aXpoOXpuamZzcHpudG4zbzIzenVlaHN0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xsE65jaPsUKUo/giphy.gif", false);
+        // replace with your telegram chat id
+        String chatId = "your-telegram-chat-id";
+        // replace with your telegram bot token
+        String botToken = "your-telegram-bot-token";
+        telegramClient.sendMessage(chatId, botToken, telegramMessage);
+    }
+
+    public void telegramGifNotificationWithCtaButtonsExample() {
+        Button button = new Button("Visit N1netails", "https://n1netails.com");
+        InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup(Collections.singletonList(Collections.singletonList(button)));
+        TelegramMessage telegramMessage = new TelegramMessage("Check out this GIF!", "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDRhOWtpMnVsM2NiMzJ4aXpoOXpuamZzcHpudG4zbzIzenVlaHN0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xsE65jaPsUKUo/giphy.gif", false, keyboardMarkup);
         // replace with your telegram chat id
         String chatId = "your-telegram-chat-id";
         // replace with your telegram bot token
@@ -183,6 +194,16 @@ public class ExampleService {
 #### Example message output
 <div align="center">
   <img src="telegram-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
+</div>
+
+#### Example message GIF output
+<div align="center">
+  <img src="telegram-gif-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
+</div>
+
+#### Example message GIF with CTA Buttons output
+<div align="center">
+  <img src="telegram-gif-cta-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
 </div>
 
 # Develop

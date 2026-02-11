@@ -32,17 +32,29 @@ public class BotService {
      */
     public void send(String chatId, String botToken, TelegramMessage message) throws TelegramClientException {
         try {
-            String apiUrl = "https://api.telegram.org/bot" + botToken + "/sendMessage";
+            boolean isAnimation = message.getAnimation() != null && !message.getAnimation().isEmpty();
+            String method = isAnimation ? "sendAnimation" : "sendMessage";
+            String apiUrl = "https://api.telegram.org/bot" + botToken + "/" + method;
+
             JSONObject jsonPayload = new JSONObject();
             jsonPayload.put("chat_id", chatId);
-            jsonPayload.put("text", message.getText());
+
+            if (isAnimation) {
+                jsonPayload.put("animation", message.getAnimation());
+                if (message.getText() != null) {
+                    jsonPayload.put("caption", message.getText());
+                }
+            } else {
+                jsonPayload.put("text", message.getText());
+            }
+
             jsonPayload.put("disable_notification", message.isDisableNotification());
 
             if (message.getReplyMarkup() != null) {
                 jsonPayload.put("reply_markup", new JSONObject(message.getReplyMarkup()));
             }
 
-            HttpURLConnection conn = (HttpURLConnection) new URL(apiUrl).openConnection();
+            HttpURLConnection conn = openConnection(apiUrl);
             conn.setRequestMethod("POST");
             conn.setDoOutput(true);
             conn.setRequestProperty("Content-Type", "application/json");
@@ -65,5 +77,9 @@ public class BotService {
         } catch (Exception e) {
             throw new TelegramClientException("Failed to send Telegram message", e);
         }
+    }
+
+    protected HttpURLConnection openConnection(String apiUrl) throws Exception {
+        return (HttpURLConnection) new URL(apiUrl).openConnection();
     }
 }

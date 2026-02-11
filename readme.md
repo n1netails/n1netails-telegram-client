@@ -168,6 +168,15 @@ public class ExampleService {
         String botToken = "your-telegram-bot-token";
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
+
+    public void telegramGifNotificationExample() {
+        TelegramMessage telegramMessage = new TelegramMessage("Check out this GIF!", "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueGZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3bmZ3JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/3o7TKSjPQCpSWvS9E4/giphy.gif", false);
+        // replace with your telegram chat id
+        String chatId = "your-telegram-chat-id";
+        // replace with your telegram bot token
+        String botToken = "your-telegram-bot-token";
+        telegramClient.sendMessage(chatId, botToken, telegramMessage);
+    }
 }
 ```
 

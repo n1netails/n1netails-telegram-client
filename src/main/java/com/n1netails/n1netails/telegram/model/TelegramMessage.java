@@ -12,6 +12,7 @@ import lombok.Setter;
 public class TelegramMessage {
 
     private String text;
+    private String animation;
     private boolean disableNotification;
     private InlineKeyboardMarkup replyMarkup;
 
@@ -19,6 +20,18 @@ public class TelegramMessage {
      * Telegram Message Constructor
      */
     public TelegramMessage() {}
+
+    /**
+     * Telegram Message Constructor
+     * @param text telegram content
+     * @param animation animation url
+     * @param disableNotification disable telegram notification
+     */
+    public TelegramMessage(String text, String animation, boolean disableNotification) {
+        this.text = text;
+        this.animation = animation;
+        this.disableNotification = disableNotification;
+    }
 
     /**
      * Telegram Message Constructor
@@ -38,6 +51,20 @@ public class TelegramMessage {
      */
     public TelegramMessage(String text, boolean disableNotification, InlineKeyboardMarkup replyMarkup) {
         this.text = text;
+        this.disableNotification = disableNotification;
+        this.replyMarkup = replyMarkup;
+    }
+
+    /**
+     * Telegram Message Constructor
+     * @param text telegram content
+     * @param animation animation url
+     * @param disableNotification disable telegram notification
+     * @param replyMarkup the reply markup
+     */
+    public TelegramMessage(String text, String animation, boolean disableNotification, InlineKeyboardMarkup replyMarkup) {
+        this.text = text;
+        this.animation = animation;
         this.disableNotification = disableNotification;
         this.replyMarkup = replyMarkup;
     }

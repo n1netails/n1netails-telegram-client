@@ -149,6 +149,7 @@ import com.n1netails.n1netails.telegram.model.InlineKeyboardMarkup;
 import com.n1netails.n1netails.telegram.model.TelegramMessage;
 import com.n1netails.n1netails.telegram.service.BotService;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 public class ExampleService {
@@ -188,8 +189,44 @@ public class ExampleService {
         String botToken = "your-telegram-bot-token";
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
+
+    public void telegramImageNotificationExample() {
+        TelegramMessage telegramMessage = new TelegramMessage();
+        telegramMessage.setText("Check out this photo!");
+        telegramMessage.setImages(Collections.singletonList("https://n1netails.com/photo.jpg"));
+        // replace with your telegram chat id
+        String chatId = "your-telegram-chat-id";
+        // replace with your telegram bot token
+        String botToken = "your-telegram-bot-token";
+        telegramClient.sendMessage(chatId, botToken, telegramMessage);
+    }
+
+    public void telegramVideoNotificationExample() {
+        TelegramMessage telegramMessage = new TelegramMessage();
+        telegramMessage.setText("Check out this video!");
+        telegramMessage.setVideos(Collections.singletonList("https://n1netails.com/video.mp4"));
+        // replace with your telegram chat id
+        String chatId = "your-telegram-chat-id";
+        // replace with your telegram bot token
+        String botToken = "your-telegram-bot-token";
+        telegramClient.sendMessage(chatId, botToken, telegramMessage);
+    }
+
+    public void telegramMediaGroupNotificationExample() {
+        TelegramMessage telegramMessage = new TelegramMessage();
+        telegramMessage.setText("Check out these photos and videos!");
+        telegramMessage.setImages(Arrays.asList("https://n1netails.com/photo1.jpg", "https://n1netails.com/photo2.jpg"));
+        telegramMessage.setVideos(Collections.singletonList("https://n1netails.com/video1.mp4"));
+        // replace with your telegram chat id
+        String chatId = "your-telegram-chat-id";
+        // replace with your telegram bot token
+        String botToken = "your-telegram-bot-token";
+        telegramClient.sendMessage(chatId, botToken, telegramMessage);
+    }
 }
 ```
+
+> 📌 **Note:** Media (images, videos, animations) must be provided as public URLs. Telegram does not support `replyMarkup` (CTA buttons) when sending multiple media items (Media Group).
 
 #### Example message output
 <div align="center">

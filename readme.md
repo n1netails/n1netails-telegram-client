@@ -226,7 +226,7 @@ public class ExampleService {
 }
 ```
 
-> 📌 **Note:** Media (images, videos, animations) must be provided as public URLs. Telegram does not support `replyMarkup` (CTA buttons) when sending multiple media items (Media Group).
+> 📌 **Note:** Media (images, videos, animations) must be provided as public URLs. Telegram does not support `replyMarkup` (CTA buttons) when sending multiple media items (Media Group) you can add CTA button with one image or video.
 
 #### Example message output
 <div align="center">

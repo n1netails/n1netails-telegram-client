@@ -93,13 +93,13 @@ Install the telegram client by adding the following dependency:
 <dependency>
     <groupId>com.n1netails</groupId>
     <artifactId>n1netails-telegram-client</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.1</version>
 </dependency>
 ```
 
 Gradle (Groovy)
 ```groovy
-implementation 'com.n1netails:n1netails-telegram-client:0.3.0'
+implementation 'com.n1netails:n1netails-telegram-client:0.4.1'
 ```
 
 ## Configure
@@ -159,7 +159,7 @@ public class ExampleService {
         this.telegramClient = new TelegramClientImpl(new BotService());
     }
 
-    public void telegramNotificationExample(String content) throws TelegramClientException {
+    public void telegramNotificationExample(String content) {
         Button button = new Button("Visit N1netails", "https://n1netails.com");
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup(Collections.singletonList(Collections.singletonList(button)));
         TelegramMessage telegramMessage = new TelegramMessage("N1netails Telegram Works!", false, keyboardMarkup);
@@ -170,7 +170,7 @@ public class ExampleService {
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
 
-    public void telegramGifNotificationExample() throws TelegramClientException {
+    public void telegramGifNotificationExample() {
         TelegramMessage telegramMessage = new TelegramMessage("Check out this GIF!", "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDRhOWtpMnVsM2NiMzJ4aXpoOXpuamZzcHpudG4zbzIzenVlaHN0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xsE65jaPsUKUo/giphy.gif", false);
         // replace with your telegram chat id
         String chatId = "your-telegram-chat-id";
@@ -179,7 +179,7 @@ public class ExampleService {
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
 
-    public void telegramGifNotificationWithCtaButtonsExample() throws TelegramClientException {
+    public void telegramGifNotificationWithCtaButtonsExample() {
         Button button = new Button("Visit N1netails", "https://n1netails.com");
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup(Collections.singletonList(Collections.singletonList(button)));
         TelegramMessage telegramMessage = new TelegramMessage("Check out this GIF!", "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDRhOWtpMnVsM2NiMzJ4aXpoOXpuamZzcHpudG4zbzIzenVlaHN0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xsE65jaPsUKUo/giphy.gif", false, keyboardMarkup);
@@ -190,10 +190,10 @@ public class ExampleService {
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
 
-    public void telegramImageNotificationExample() throws TelegramClientException {
+    public void telegramImageNotificationExample() {
         TelegramMessage telegramMessage = new TelegramMessage();
         telegramMessage.setText("Check out this photo!");
-        telegramMessage.setImages(Collections.singletonList("https://n1netails.com/img/n1netails_icon_transparent.png"));
+        telegramMessage.setImages(Collections.singletonList("https://n1netails.com/photo.jpg"));
         // replace with your telegram chat id
         String chatId = "your-telegram-chat-id";
         // replace with your telegram bot token
@@ -201,10 +201,10 @@ public class ExampleService {
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
 
-    public void telegramVideoNotificationExample() throws TelegramClientException {
+    public void telegramVideoNotificationExample() {
         TelegramMessage telegramMessage = new TelegramMessage();
         telegramMessage.setText("Check out this video!");
-        telegramMessage.setVideos(Collections.singletonList("https://n1netails.nyc3.cdn.digitaloceanspaces.com/video_2026-02-11_18-16-07.mp4"));
+        telegramMessage.setVideos(Collections.singletonList("https://n1netails.com/video.mp4"));
         // replace with your telegram chat id
         String chatId = "your-telegram-chat-id";
         // replace with your telegram bot token
@@ -212,11 +212,11 @@ public class ExampleService {
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
 
-    public void telegramMediaGroupNotificationExample() throws TelegramClientException {
+    public void telegramMediaGroupNotificationExample() {
         TelegramMessage telegramMessage = new TelegramMessage();
         telegramMessage.setText("Check out these photos and videos!");
-        telegramMessage.setImages(Arrays.asList("https://n1netails.com/img/n1netails_icon_transparent.png", "https://n1netails.com/img/quickstart/n1netails-letter.jpg"));
-        telegramMessage.setVideos(Collections.singletonList("https://n1netails.nyc3.cdn.digitaloceanspaces.com/video_2026-02-11_18-16-07.mp4"));
+        telegramMessage.setImages(Arrays.asList("https://n1netails.com/photo1.jpg", "https://n1netails.com/photo2.jpg"));
+        telegramMessage.setVideos(Collections.singletonList("https://n1netails.com/video1.mp4"));
         // replace with your telegram chat id
         String chatId = "your-telegram-chat-id";
         // replace with your telegram bot token
@@ -242,22 +242,6 @@ public class ExampleService {
 <div align="center">
   <img src="telegram-gif-cta-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
 </div>
-
-#### Example message Image output
-<div align="center">
-  <img src="telegram-image-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
-</div>
-
-#### Example message Video output
-<div align="center">
-  <img src="telegram-video-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
-</div>
-
-#### Example message Media group output
-<div align="center">
-  <img src="telegram-group-media-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
-</div>
-
 
 # Develop
 ## Build

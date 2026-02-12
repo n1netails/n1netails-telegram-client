@@ -93,13 +93,13 @@ Install the telegram client by adding the following dependency:
 <dependency>
     <groupId>com.n1netails</groupId>
     <artifactId>n1netails-telegram-client</artifactId>
-    <version>0.4.0</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
 Gradle (Groovy)
 ```groovy
-implementation 'com.n1netails:n1netails-telegram-client:0.4.0'
+implementation 'com.n1netails:n1netails-telegram-client:0.3.0'
 ```
 
 ## Configure

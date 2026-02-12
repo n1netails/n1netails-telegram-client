@@ -149,6 +149,7 @@ import com.n1netails.n1netails.telegram.model.InlineKeyboardMarkup;
 import com.n1netails.n1netails.telegram.model.TelegramMessage;
 import com.n1netails.n1netails.telegram.service.BotService;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 public class ExampleService {
@@ -158,7 +159,7 @@ public class ExampleService {
         this.telegramClient = new TelegramClientImpl(new BotService());
     }
 
-    public void telegramNotificationExample(String content) {
+    public void telegramNotificationExample(String content) throws TelegramClientException {
         Button button = new Button("Visit N1netails", "https://n1netails.com");
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup(Collections.singletonList(Collections.singletonList(button)));
         TelegramMessage telegramMessage = new TelegramMessage("N1netails Telegram Works!", false, keyboardMarkup);
@@ -169,7 +170,7 @@ public class ExampleService {
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
 
-    public void telegramGifNotificationExample() {
+    public void telegramGifNotificationExample() throws TelegramClientException {
         TelegramMessage telegramMessage = new TelegramMessage("Check out this GIF!", "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDRhOWtpMnVsM2NiMzJ4aXpoOXpuamZzcHpudG4zbzIzenVlaHN0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xsE65jaPsUKUo/giphy.gif", false);
         // replace with your telegram chat id
         String chatId = "your-telegram-chat-id";
@@ -178,7 +179,7 @@ public class ExampleService {
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
 
-    public void telegramGifNotificationWithCtaButtonsExample() {
+    public void telegramGifNotificationWithCtaButtonsExample() throws TelegramClientException {
         Button button = new Button("Visit N1netails", "https://n1netails.com");
         InlineKeyboardMarkup keyboardMarkup = new InlineKeyboardMarkup(Collections.singletonList(Collections.singletonList(button)));
         TelegramMessage telegramMessage = new TelegramMessage("Check out this GIF!", "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDRhOWtpMnVsM2NiMzJ4aXpoOXpuamZzcHpudG4zbzIzenVlaHN0eSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xsE65jaPsUKUo/giphy.gif", false, keyboardMarkup);
@@ -188,8 +189,44 @@ public class ExampleService {
         String botToken = "your-telegram-bot-token";
         telegramClient.sendMessage(chatId, botToken, telegramMessage);
     }
+
+    public void telegramImageNotificationExample() throws TelegramClientException {
+        TelegramMessage telegramMessage = new TelegramMessage();
+        telegramMessage.setText("Check out this photo!");
+        telegramMessage.setImages(Collections.singletonList("https://n1netails.com/img/n1netails_icon_transparent.png"));
+        // replace with your telegram chat id
+        String chatId = "your-telegram-chat-id";
+        // replace with your telegram bot token
+        String botToken = "your-telegram-bot-token";
+        telegramClient.sendMessage(chatId, botToken, telegramMessage);
+    }
+
+    public void telegramVideoNotificationExample() throws TelegramClientException {
+        TelegramMessage telegramMessage = new TelegramMessage();
+        telegramMessage.setText("Check out this video!");
+        telegramMessage.setVideos(Collections.singletonList("https://n1netails.nyc3.cdn.digitaloceanspaces.com/video_2026-02-11_18-16-07.mp4"));
+        // replace with your telegram chat id
+        String chatId = "your-telegram-chat-id";
+        // replace with your telegram bot token
+        String botToken = "your-telegram-bot-token";
+        telegramClient.sendMessage(chatId, botToken, telegramMessage);
+    }
+
+    public void telegramMediaGroupNotificationExample() throws TelegramClientException {
+        TelegramMessage telegramMessage = new TelegramMessage();
+        telegramMessage.setText("Check out these photos and videos!");
+        telegramMessage.setImages(Arrays.asList("https://n1netails.com/img/n1netails_icon_transparent.png", "https://n1netails.com/img/quickstart/n1netails-letter.jpg"));
+        telegramMessage.setVideos(Collections.singletonList("https://n1netails.nyc3.cdn.digitaloceanspaces.com/video_2026-02-11_18-16-07.mp4"));
+        // replace with your telegram chat id
+        String chatId = "your-telegram-chat-id";
+        // replace with your telegram bot token
+        String botToken = "your-telegram-bot-token";
+        telegramClient.sendMessage(chatId, botToken, telegramMessage);
+    }
 }
 ```
+
+> 📌 **Note:** Media (images, videos, animations) must be provided as public URLs. Telegram does not support `replyMarkup` (CTA buttons) when sending multiple media items (Media Group).
 
 #### Example message output
 <div align="center">
@@ -205,6 +242,22 @@ public class ExampleService {
 <div align="center">
   <img src="telegram-gif-cta-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
 </div>
+
+#### Example message Image output
+<div align="center">
+  <img src="telegram-image-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
+</div>
+
+#### Example message Video output
+<div align="center">
+  <img src="telegram-video-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
+</div>
+
+#### Example message Media group output
+<div align="center">
+  <img src="telegram-group-media-message.png" alt="N1netails telegram message simple" width="500" style="display: block; margin: auto;"/>
+</div>
+
 
 # Develop
 ## Build
